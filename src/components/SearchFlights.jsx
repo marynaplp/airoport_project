@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import qs from "qs";
-import { dateSelector } from "../flight.selectors";
+import { dateSelector } from "../redux/flight.selectors";
 
 const SearchFlights = ({ date }) => {
     const [value, setValue] = useState("");
@@ -31,8 +31,8 @@ const SearchFlights = ({ date }) => {
             };
             pathname = location.pathname + "?";
         }
-        const queryString = qs.stringify(dataQuery);
-        history.push(`${pathname}${queryString}`);
+      const queryString = qs.stringify(dataQuery);
+       history.push(`${pathname}${queryString}`);
     };
 
     return (

@@ -2,15 +2,15 @@ import React from "react";
 import moment from "moment";
 
 const Flight = (props) => {
-  const { term, fltNo, status, name, logoUrl, airportName, localTime } = props;
-  const timetable = moment(localTime).format("HH:mm");
+  const { term, flightNum, status, name, logoUrl, airportName, localTime } = props;
+  const sheduale = moment(localTime).format("HH:mm");
 
   return (
     <tr>
       <td>
         <span className={term === "D" ? "terminal blue" : "terminal"}>{term}</span>
       </td>
-      <td>{timetable}</td>
+      <td>{sheduale}</td>
       <td>
         <span>{airportName}</span>
       </td>
@@ -24,7 +24,7 @@ const Flight = (props) => {
         </span>
       </td>
       <td>
-        <span>{`${fltNo}`}</span>
+        <span>{`${flightNum}`}</span>
       </td>
       <td>
         <i className="fas fa-chevron-right"></i>

@@ -1,4 +1,4 @@
-import { fetchFlights } from "./flight.gateway";
+import { fetchFlightList } from "./flight.gateway";
 
 export const FLIGHTS_LIST = "AIRPORT/FLIGHTS_LIST";
 
@@ -11,7 +11,7 @@ export const flightsList = (dataList, date) => {
 
 export const fetchFlightsList = (date) => {
     const thunkAction = (dispatch) => {
-        fetchFlights(date).then((dataList) => {
+        fetchFlightList(date).then((dataList) => {
             dispatch(flightsList(dataList, date));
         });
     };

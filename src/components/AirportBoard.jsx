@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import SearchFlights from "./SearchFlights";
 import FlightSchedule from "./FlightSchedule";
-import * as flightsActions from "../flight.actions";
+import * as flightsActions from "../redux/flight.actions";
 
 const AirportBoard = ({ fetchFlightsList }) => {
   useEffect(() => {

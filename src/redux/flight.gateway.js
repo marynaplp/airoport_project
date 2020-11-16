@@ -1,6 +1,6 @@
 const baseUrl = 'https://api.iev.aero/api/flights';
 
-export const getFlightList = date =>
+export const fetchFlightList = date =>
     fetch(`${baseUrl}/${date}`)
     .then(res => {
         if (res.ok) {

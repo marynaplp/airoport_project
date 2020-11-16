@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import qs from "qs";
-import { fetchFlightsList } from "../flight.actions";
+import { departureSelector, arrivalSelector } from "../redux/flight.selectors";
+import { fetchFlightsList } from "../redux/flight.actions";
 import Flight from "./Flight";
 
 const FlightsList = ({ departureList, arrivalList }) => {
@@ -35,7 +36,7 @@ const FlightsList = ({ departureList, arrivalList }) => {
     return flightsList.map((flight) => {
       let flightData = {
         term: flight.term,
-        fltNo: `${flight["carrierID.IATA"]}${flight.fltNo}`,
+        flightNum: `${flight["carrierID.IATA"]}${flight.fltNo}`,
         airportName: flight["airportToID.name_en"] || flight["airportFromID.name_en"],
         localTime: flight.timeDepSchedule,
         timeStatus: flight.timeTakeOfFact,
@@ -60,8 +61,13 @@ const FlightsList = ({ departureList, arrivalList }) => {
       </>
   );
 };
-
+const mapState = (state) => {
+  return {
+    departureList: departureSelector(state),
+    arrivalList: arrivalSelector(state),
+  };
+};
 const mapDispatch = {
   getFlightsList: fetchFlightsList,
 };
-export default connect( mapDispatch)(FlightsList);
+export default connect(mapState, mapDispatch)(FlightsList);
